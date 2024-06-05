@@ -4,11 +4,8 @@ on:
   pull_request_target:
     types: [assigned, opened, synchronize, reopened, edited]
 
-
-  
 jobs:
   rhda_job:
-    permissions: read-all
     runs-on: ubuntu-latest
     name: Testing RHDA action
     steps:
