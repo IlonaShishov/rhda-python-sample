@@ -4,9 +4,7 @@ on:
   pull_request_target:
     types: [assigned, opened, synchronize, reopened, edited]
 
-permissions:
-  issues: read
-  pull-requests: read
+permissions: read-all
   
 jobs:
   rhda_job:
