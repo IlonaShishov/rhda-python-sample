@@ -42,7 +42,4 @@ jobs:
         with:
           use_python_virtual_environment: "true"
           github_token: ${{ secrets.MY_PAT }}
-
-        env:
-          GHT: ${{ vars.MY_PAT }}
         
