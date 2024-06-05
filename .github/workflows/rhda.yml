@@ -37,12 +37,39 @@ jobs:
           sudo apt-get install -y skopeo
           skopeo --version
 
+      - name: Use Personal Access Token with Octokit
+        env:
+          MY_PAT: ${{ secrets.MY_PAT }}
+        run: |
+          const { Octokit } = require("@octokit/rest");
+          const octokit = new Octokit({ auth: process.env.MY_PAT });
+          const github = require('@actions/github');
+  
+          const prNumber = 14; // Example pull request number
+  
+          // Working call for both org and personal repositories
+          const labelsResponse = await octokit.paginate("GET /repos/{owner}/{repo}/labels", {
+            owner: github.context.repo.owner,
+            repo: github.context.repo.repo,
+          });
+
+          console.log(labelsResponse);
+  
+          // The problematic call
+          const issueLabelsResponse = await octokit.paginate("GET /repos/{owner}/{repo}/issues/{issue_number}/labels", {
+            owner: github.context.repo.owner,
+            repo: github.context.repo.repo,
+            issue_number: prNumber,
+          });
+  
+          console.log(issueLabelsResponse);
+        
       - name: RHDA analysis
         uses: RHEcosystemAppEng/rhda-github-action@chore/remove-user-auth
         with:
           use_python_virtual_environment: "true"
-          github_token: ${{ secrets.PAT }}
+          github_token: ${{ secrets.MY_PAT }}
 
         env:
-          GHT: ${{ vars.PAT }}
+          GHT: ${{ vars.MY_PAT }}
         
