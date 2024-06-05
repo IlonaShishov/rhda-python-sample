@@ -40,6 +40,5 @@ jobs:
       - name: RHDA analysis
         uses: RHEcosystemAppEng/rhda-github-action@main
         with:
-          manifest_file_path: requirements.txt
           use_python_virtual_environment: "true"
         
