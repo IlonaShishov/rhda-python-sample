@@ -3,6 +3,9 @@ name: RHDA Workflow
 on:
   pull_request_target:
     types: [assigned, opened, synchronize, reopened, edited]
+
+permissions:
+  issues: read
   
 jobs:
   rhda_job:
@@ -41,5 +44,4 @@ jobs:
         uses: RHEcosystemAppEng/rhda-github-action@chore/remove-user-auth
         with:
           use_python_virtual_environment: "true"
-          github_token: ${{ secrets.PAT }}
         
