@@ -6,6 +6,7 @@ on:
 
 permissions:
   issues: read
+  pull-requests: read
   
 jobs:
   rhda_job:
