@@ -38,7 +38,7 @@ jobs:
           skopeo --version
         
       - name: RHDA analysis
-        uses: RHEcosystemAppEng/rhda-github-action@chore/remove-user-auth
+        uses: RHEcosystemAppEng/rhda-github-action@main
         with:
           use_python_virtual_environment: "true"
         
