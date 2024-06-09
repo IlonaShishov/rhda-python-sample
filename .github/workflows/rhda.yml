@@ -11,8 +11,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          ssh-key: ${{ secrets.MY_PAT }}
       
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -43,4 +41,5 @@ jobs:
         uses: RHEcosystemAppEng/rhda-github-action@chore/remove-user-auth
         with:
           use_python_virtual_environment: "true"
+          github_token: ${{ secrets.MY_PAT }}
         
