@@ -38,7 +38,7 @@ jobs:
           skopeo --version
         
       - name: RHDA analysis
-        uses: RHEcosystemAppEng/rhda-github-action@chore/lint
+        uses: RHEcosystemAppEng/rhda-github-action@chore/unit-tests
         with:
           use_python_virtual_environment: "true"
         
